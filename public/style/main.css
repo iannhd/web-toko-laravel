@@ -9380,7 +9380,7 @@ footer p {
   color: #0C0D36;
   margin-top: 18px;
 }
-.store-cart .product-itle {
+.store-cart .product-title {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -9407,7 +9407,7 @@ footer p {
 }
 .store-cart .table-cart .cart-image {
   border-radius: 8px;
-  max-height: 85px;
+  height: 150px;
 }
 .store-cart .table-cart .btn-remove-cart {
   margin-top: 18px;
