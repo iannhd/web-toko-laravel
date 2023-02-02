@@ -12,7 +12,7 @@
     <title>@yield('title')</title>
     @stack('prepend-style')
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" crossorigin="anonymous" />
-    <link href="style/main.css" rel="stylesheet" />
+    <link href={{asset("/style/main.css")}} rel="stylesheet" crossorigin="anonymous"/>
     @stack('addon-style')
   </head>
 
@@ -22,11 +22,11 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
           <div class="sidebar-heading text-center">
-            <img src="./images/dashboard-store-logo.svg" class="my-4" alt="">
+            <a href="{{url('/')}}"><img src="/images/dashboard-store-logo.svg" class="my-4" alt=""></a>
           </div>
           <div class="list-group list-group-flush">
             <a href="/dashboard.html" 
-            class="list-group-item list-group-item-action active">
+            class="list-group-item list-group-item-action ">
               Dashboard
             </a>
             <a href="/dashboard-products.html" 
@@ -74,7 +74,7 @@
                 <ul class="navbar-nav d-none d-lg-flex ml-auto">
                   <li class="nav-item dropdown">
                     <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" >
-                      <img src="./bwa-icon/icon-user.png" alt="" class="rounded-circle mr-2 profile-picture">
+                      <img src="/bwa-icon/icon-user.png" alt="" class="rounded-circle mr-2 profile-picture">
                       Hi, Angga
                     </a>
                     <div class="dropdown-menu">
@@ -86,7 +86,7 @@
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link inline-block mt-2">
-                      <img src="./bwa-icon/icon-cart.png" alt="">
+                      <img src="/bwa-icon/icon-cart.png" alt="">
                       <div class="card-badge">3</div>
                     </a>
                   </li>

@@ -11,8 +11,8 @@ class DetailController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index($id)
     {
-        return view('pages.detail');
+        return view('pages.detail', [$id]);
     }
 }

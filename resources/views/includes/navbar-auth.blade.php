@@ -11,7 +11,7 @@ data-aos="fade-down"
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a href="{{url('/')}}" class="nav-link active">Home</a>
+        <a href="{{url('/')}}" class="nav-link ">Home</a>
       </li>
       <li class="nav-item ">
         <a href="{{url('/categories')}}" class="nav-link">Categories</a>
