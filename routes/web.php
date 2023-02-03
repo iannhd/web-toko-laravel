@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardTransactionController;
 use App\Http\Controllers\DashboardSettingsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,20 @@ Route::get('/dashboard-products/create', [DashboardProductController::class, 'cr
 Route::get('/dashboard/transactions', [DashboardTransactionController::class, 'index'])->name('dashboard-transaction');
 Route::get('/dashboard/settings', [DashboardSettingsController::class, 'store'])->name('dashboard-settings');
 Route::get('/dashboard/account', [DashboardSettingsController::class, 'account'])->name('dashboard-account');
+
+
+// Route Admin
+// ->middleware(['auth', 'admin'])
+Route::prefix('admin')
+    ->group(function() {
+        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
+        Route::resource('category', App\Http\Controllers\Admin\CategoryController::class );
+    });
+
+    // Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin'],
+    // function() {
+    //     Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
+    // });
 
 // Route with params
 Route::get('/dashboard-products/{id}',[DashboardProductController::class, 'details'])->name('dashboard-products-details');
