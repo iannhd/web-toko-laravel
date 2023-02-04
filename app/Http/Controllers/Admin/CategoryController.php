@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Http\Request;
+use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -16,7 +17,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         if(request()->ajax())
         {
             $query = Category::query();
@@ -49,11 +50,11 @@ class CategoryController extends Controller
             ->editColumn('photo', function($item){
                 return $item->photo ? '<img src="' . Storage::url($item->photo) . '" style="max-height: 40px"/>' : '';
             })
-            ->rawColumn(['action', 'photo'])
+            ->rawColumns(['action', 'photo'])
             ->make(true);
             ;
         }
-        return view ('pages.admin.category.index');
+            return view ('pages.admin.category.index');
     }
 
     /**
