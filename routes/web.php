@@ -26,7 +26,7 @@ use App\Http\Controllers\DashboardSettingsController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-Route::get('/detailsa/{$id}', [DetailController::class, 'index'])->name('detail');
+Route::get('/detailsa/{id}', [DetailController::class, 'index'])->name('detail');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/success', [CartController::class, 'success'])->name('success');
 

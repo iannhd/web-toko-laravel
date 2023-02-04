@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Client\Request;
-use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Admin\CategoryRequest;
+use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
@@ -64,7 +66,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.category.create');
     }
 
     /**
@@ -73,9 +75,16 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($request->name);
+        $data['photo'] = $request->file('photo')->store('assets/category', 'public');
+
+        Category::create($data);
+
+        return redirect()->route('category.index');
     }
 
     /**
@@ -97,7 +106,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        var_dump($id);
+        die;
+        $item = Category::findOrFail($id);
+
+        return view('pages.admin.category.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -107,7 +122,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         //
     }
