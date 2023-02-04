@@ -49,11 +49,6 @@ Route::prefix('admin')
         Route::resource('category', App\Http\Controllers\Admin\CategoryController::class );
     });
 
-    // Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin'],
-    // function() {
-    //     Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
-    // });
-
 // Route with params
 Route::get('/dashboard-products/{id}',[DashboardProductController::class, 'details'])->name('dashboard-products-details');
 Route::get('/dashboard-transactions/{id}', [DashboardTransactionController::class, 'details'])->name('dashboard-transaction-details');

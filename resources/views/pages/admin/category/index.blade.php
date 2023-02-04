@@ -15,48 +15,59 @@
           List of Categories
         </p>
       </div>
-      <div class="dashboard-content">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-2">
+      <div class="row">
+          <div class="col-md-12">
+            <div class="card">
               <div class="card-body">
-                <div class="dashboard-card-title">
-                  Customer
-                </div>
-                <div class="dashboard-card-subtitle">
-                  {{$customer}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-2">
-              <div class="card-body">
-                <div class="dashboard-card-title">
-                  Revenue
-                </div>
-                <div class="dashboard-card-subtitle">
-                  ${{$revenue}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-2">
-              <div class="card-body">
-                <div class="dashboard-card-title">
-                  Transaction
-                </div>
-                <div class="dashboard-card-subtitle">
-                  {{$transaction}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-            
-        </div>
+                <a href="{{route('category.create')}}" class="btn btn-primary mb-3">
+                  + Tambah Kategori Baru
+                </a>
+                <div class="table-responsive">
+                    <table id="crudTable" class="table table-hover scroll-horizontal-vertical w-100">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <th>Foto</th>
+                            <th>Slug</th>
+                            <th>Aksi</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                         
+                        </tbody>
+                    </table>  
+                </div>  
+              </div>  
+            </div>  
+          </div>    
+      </div>
     </div>
 </div>
 @endsection
+
+@push('addon-script')
+  <script>
+    var datatable = $('#crudTable').DataTable({
+      processing: true,
+      serverSide: true,
+      ordering: true,
+      ajax: {
+        url: '{!! url()->current() !!}'
+      },
+      columns: [
+        {data: 'id', name: 'id'},
+        {data: 'name', name: 'name'},
+        {data: 'photo', name: 'photo'},
+        {data: 'slug', name: 'slug'},
+        {
+          data: 'action',
+          name: 'action',
+          orderable: false,
+          searchable: false,
+          width: '15%'
+        }
+      ]
+      })
+  </script>
+@endpush
