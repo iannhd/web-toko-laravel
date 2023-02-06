@@ -54,7 +54,6 @@
                                 <label for="">Kategori Product</label>
                                 <select name="categories_id" class="form-control">
                                     @foreach($categories as $category)
-                                        <option value="{{$item->categories_id}}">{{$item->category->name}}</option>
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
