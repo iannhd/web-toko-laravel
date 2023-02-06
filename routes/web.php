@@ -1,16 +1,16 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardTransactionController;
 use App\Http\Controllers\DashboardSettingsController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +56,6 @@ Route::prefix('admin')
 // Route with params
 Route::get('/dashboard-products/{id}',[DashboardProductController::class, 'details'])->name('dashboard-products-details');
 Route::get('/dashboard-transactions/{id}', [DashboardTransactionController::class, 'details'])->name('dashboard-transaction-details');
-Route::get('/details/{id}', [DetailController::class, 'index'])->name('detail');
 
 
 

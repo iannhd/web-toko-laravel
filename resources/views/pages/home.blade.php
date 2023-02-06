@@ -67,19 +67,33 @@
           <div class="col-12" data-aos="fade-up">
             <h5>New Products</h5>
             <div class="row">
-              <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                <a href="./details.html" class="component-products d-block">
+              @php $incrementProduct = 0 @endphp
+              @forelse ($products as $product)
+              <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{$incrementProduct += 100}}">
+                <a href="{{route('detail', $product->slug)}}" class="component-products d-block">
                   <div class="products-thumbnail">
-                    <div class="products-image" style="background-image: url('./bwa-icon/products-apple-watch.png');"></div>
+                    <div class="products-image" style="
+                    @if($product->galleries->first())
+                      background-image:url('{{Storage::url($product->galleries->first()->photos)}}')
+                    @else
+                      background-color: #eee;
+                    @endif
+                    ">
+                    </div>
                   </div>
                   <div class="products-text">
-                    Apple Watch 4
+                    {{$product->name}}
                   </div>
                   <div class="products-price">
-                    $890
+                    ${{$product->price}}
                   </div>
                 </a>
               </div>
+              @empty
+                  <div class="col-12 text-center py-5" data-aos="fade-up" data-aos-delay="100">
+                    No Categories Found
+                  </div>
+            @endforelse
           </div>
         </div>
       </div>
