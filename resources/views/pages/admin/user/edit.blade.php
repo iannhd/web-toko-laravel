@@ -12,47 +12,50 @@
           User
         </h2>
         <p class="dashboard-subtitle">
-          Create New User
+          Edit User
         </p>
       </div>
       <div class="row">
           <div class="col-md-12">
             @if($errors->any())
-            <div class="alert alert-danger">
-                <ul class="m-0">
-                    @foreach ($errors->all() as $error)
-                        <li style="list-style: none" class="align-items-center"> <b> {{$error}} </b></li>
-                    @endforeach
-                </ul>
-            </div>
+                <div class="alert alert-danger">
+                    <ul class="m-0">
+                        @foreach ($errors->all() as $error)
+                            <li style="list-style: none" class="align-items-center"> <b> {{$error}} </b></li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
             <div class="card">
               <div class="card-body">
-                 <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
+                 <form action="{{route('user.update', $item->id)}}" method="post" enctype="multipart/form-data">
+                    @method('put')
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Nama User</label>
-                                <input type="text" name="name" class="form-control" required>
+                                <input type="text" name="name" class="form-control" required value="{{$item->name}}">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Email User</label>
-                                <input type="email" name="email" class="form-control" required>
+                                <input type="email" name="email" class="form-control" required value="{{$item->email}}">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Password User</label>
-                                <input type="password" name="password" class="form-control" autocomplete="off" required>
+                                <input type="password" name="password" class="form-control" autocomplete="off" >
+                                <small><b>Kosongkan jika tidak mau mengganti password</b></small>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Roles</label>
                                 <select name="roles" required class="form-control">
+                                <option value="{{$item->roles}}" selected>Tidak Diganti</option>
                                 <option value="ADMIN" >Admin</option>
                                 <option value="USER">User</option>
                             </select>

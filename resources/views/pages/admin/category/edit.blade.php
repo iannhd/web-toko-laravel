@@ -17,19 +17,18 @@
       </div>
       <div class="row">
           <div class="col-md-12">
-            @if($errors->any()){
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li> {{$error}}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            }
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul class="m-0">
+                    @foreach ($errors->all() as $error)
+                        <li style="list-style: none" class="align-items-center"> <b> {{$error}} </b></li>
+                    @endforeach
+                </ul>
+            </div>
             @endif
             <div class="card">
               <div class="card-body">
-                 <form action="{{route('category.update' . $item->id)}}" method="post" enctype="multipart/form-data">
+                 <form action="{{route('category.update', $item->id)}}" method="post" enctype="multipart/form-data">
                     @method('put')
                     @csrf
                     <div class="row">

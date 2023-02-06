@@ -43,54 +43,21 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="100">
-            <a href="#" class="component-categories d-block">
+          @php $incrementCategory = 0 @endphp
+          @forelse($categories as $category)
+          <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="{{$incremetCategory += 100}}">
+            <a href="{{}}" class="component-categories d-block">
               <div class="categories-image">
                 <img src="./bwa-icon/categories-gadgets.svg" class="w-100" alt="">
               </div>
               <p class="categories-text">Gadgets</p>
             </a>
           </div>
-          <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="200">
-            <a href="#" class="component-categories d-block">
-              <div class="categories-image">
-                <img src="./bwa-icon/categories-furniture.svg" class="w-100" alt="">
+          @empty($record)
+              <div class="col-12 text-center py-5" data-aos="fade-up" data-aos-delay="100">
+                  No Categories Found
               </div>
-              <p class="categories-text">Furniture</p>
-            </a>
-          </div>
-          <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="300">
-            <a href="#" class="component-categories d-block">
-              <div class="categories-image">
-                <img src="./bwa-icon/categories-makeup.svg" class="w-100" alt="">
-              </div>
-              <p class="categories-text">Makeup</p>
-            </a>
-          </div>
-          <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="400">
-            <a href="#" class="component-categories d-block">
-              <div class="categories-image">
-                <img src="./bwa-icon/categories-sneaker.svg" class="w-100" alt="">
-              </div>
-              <p class="categories-text">Sneaker</p>
-            </a>
-          </div>
-          <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="500">
-            <a href="#" class="component-categories d-block">
-              <div class="categories-image">
-                <img src="./bwa-icon/categories-tools.svg" class="w-100" alt="">
-              </div>
-              <p class="categories-text">Tools</p>
-            </a>
-          </div>
-          <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="600">
-            <a href="#" class="component-categories d-block">
-              <div class="categories-image">
-                <img src="./bwa-icon/categories-baby.svg" class="w-100" alt="">
-              </div>
-              <p class="categories-text">Baby</p>
-            </a>
-          </div>
+          @endempty
         </div>
       </div>
     </section>

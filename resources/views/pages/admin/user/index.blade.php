@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Category
+    User
 @endsection
 
 @section('content')
@@ -9,18 +9,18 @@
     <div class="container-fluid">
       <div class="dashboard-heading">
         <h2 class="dashboard-title">
-          Category
+          User
         </h2>
         <p class="dashboard-subtitle">
-          List of Categories
+          List of Users
         </p>
       </div>
       <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <a href="{{route('category.create')}}" class="btn btn-primary mb-3">
-                  + Tambah Kategori Baru
+                <a href="{{route('user.create')}}" class="btn btn-primary mb-3">
+                  + Tambah User Baru
                 </a>
                 <div class="table-responsive">
                     <table id="crudTable" class="table table-hover scroll-horizontal-vertical w-100">
@@ -28,8 +28,8 @@
                           <tr>
                             <th>ID</th>
                             <th>Nama</th>
-                            <th>Foto</th>
-                            <th>Slug</th>
+                            <th>Email</th>
+                            <th>Roles</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -52,14 +52,15 @@
       processing: true,
       serverSide: true,
       ordering: true,
+    
       ajax: {
         url: '{!! url()->current() !!}'
       },
       columns: [
         {data: 'id', name: 'id'},
         {data: 'name', name: 'name'},
-        {data: 'photo', name: 'photo'},
-        {data: 'slug', name: 'slug'},
+        {data: 'email', name: 'email'},
+        {data: 'roles', name: 'roles'},
         {
           data: 'action',
           name: 'action',
@@ -68,7 +69,6 @@
           width: '15%'
         }
       ]
-      })
-     
+    })
   </script>
 @endpush

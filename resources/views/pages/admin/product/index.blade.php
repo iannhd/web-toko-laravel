@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Category
+    Product
 @endsection
 
 @section('content')
@@ -9,18 +9,18 @@
     <div class="container-fluid">
       <div class="dashboard-heading">
         <h2 class="dashboard-title">
-          Category
+          Product
         </h2>
         <p class="dashboard-subtitle">
-          List of Categories
+          List of Products
         </p>
       </div>
       <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <a href="{{route('category.create')}}" class="btn btn-primary mb-3">
-                  + Tambah Kategori Baru
+                <a href="{{route('product.create')}}" class="btn btn-primary mb-3">
+                  + Tambah Product Baru
                 </a>
                 <div class="table-responsive">
                     <table id="crudTable" class="table table-hover scroll-horizontal-vertical w-100">
@@ -28,8 +28,9 @@
                           <tr>
                             <th>ID</th>
                             <th>Nama</th>
-                            <th>Foto</th>
-                            <th>Slug</th>
+                            <th>Pemilik</th>
+                            <th>Kategori</th>
+                            <th>Harga</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -52,14 +53,16 @@
       processing: true,
       serverSide: true,
       ordering: true,
+    
       ajax: {
         url: '{!! url()->current() !!}'
       },
       columns: [
         {data: 'id', name: 'id'},
         {data: 'name', name: 'name'},
-        {data: 'photo', name: 'photo'},
-        {data: 'slug', name: 'slug'},
+        {data: 'user.name', name: 'user.name'},
+        {data: 'category.name', name: 'category.name'},
+        {data: 'price', name: 'price'},
         {
           data: 'action',
           name: 'action',
@@ -68,7 +71,6 @@
           width: '15%'
         }
       ]
-      })
-     
+    })
   </script>
 @endpush

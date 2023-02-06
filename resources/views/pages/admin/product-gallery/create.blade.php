@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Category
+    Product Gallery
 @endsection
 
 @section('content')
@@ -9,38 +9,42 @@
     <div class="container-fluid">
       <div class="dashboard-heading">
         <h2 class="dashboard-title">
-          Category
+          Product Gallery
         </h2>
         <p class="dashboard-subtitle">
-          Create New Category
+          Create New Product Gallery
         </p>
       </div>
       <div class="row">
           <div class="col-md-12">
             @if($errors->any())
-            <div class="alert alert-danger">
-                <ul class="m-0">
-                    @foreach ($errors->all() as $error)
-                        <li style="list-style: none" class="align-items-center"> <b> {{$error}} </b></li>
-                    @endforeach
-                </ul>
+                <div class="alert alert-danger">
+                    <ul class="m-0">
+                        @foreach ($errors->all() as $error)
+                            <li style="list-style: none" class="align-items-center"> <b> {{$error}} </b></li>
+                        @endforeach
+                    </ul>
             </div>
             @endif
             <div class="card">
               <div class="card-body">
-                 <form action="{{route('category.store')}}" method="post" enctype="multipart/form-data">
+                 <form action="{{route('product-gallery.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Nama Kategori</label>
-                                <input type="text" name="name" class="form-control" required>
+                                <label for="">Product</label>
+                                <select name="products_id" class="form-control">
+                                    @foreach($products as $product)
+                                        <option value="{{$product->id}}">{{$product->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Foto Kategori</label>
-                                <input type="file" name="photo" class="form-control" required>
+                                <label for="">Foto Product</label>
+                                <input type="file" name="photos" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -58,3 +62,4 @@
     </div>
 </div>
 @endsection
+
