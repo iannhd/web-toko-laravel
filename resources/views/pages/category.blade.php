@@ -70,7 +70,7 @@
           </div>
           <div class="row">
             <div class="col-12 mt-4">
-              {{$products->links()}}
+              <span>{{$products->links()}}</span>
             </div>
           </div>
         </div>

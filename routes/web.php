@@ -38,8 +38,8 @@ Route::get('/dashboard-products', [DashboardProductController::class, 'index'])-
 Route::get('/dashboard-products/create', [DashboardProductController::class, 'create'])->name('dashboard-products-create');
 
 Route::get('/dashboard/transactions', [DashboardTransactionController::class, 'index'])->name('dashboard-transaction');
-Route::get('/dashboard/settings', [DashboardSettingsController::class, 'store'])->name('dashboard-settings');
-Route::get('/dashboard/account', [DashboardSettingsController::class, 'account'])->name('dashboard-account');
+Route::get('/dashboard/settings', [DashboardSettingsController::class, 'store'])->name('dashboard-settings-store');
+Route::get('/dashboard/account', [DashboardSettingsController::class, 'account'])->name('dashboard-settings-account');
 
 
 // Route Admin
@@ -60,3 +60,7 @@ Route::get('/dashboard-transactions/{id}', [DashboardTransactionController::clas
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -19,13 +19,67 @@
           <li class="nav-item ">
             <a href="/rewards.html" class="nav-link">Rewards</a>
           </li>
+          @guest
           <li class="nav-item ">
             <a href="/register.html" class="nav-link">Sign Up</a>
           </li>
           <li class="nav-item ">
             <a href="/login.html" class="nav-link btn btn-success px-4 text-white">Sign In</a>
           </li>
+          @endguest
         </ul>
+        @auth
+          <!-- Desktop Menu -->
+         <ul class="navbar-nav d-none d-lg-flex">
+          <li class="nav-item dropdown">
+            <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" >
+              <img src="/bwa-icon/icon-user.png" alt="" class="rounded-circle mr-2 profile-picture">
+              Hi, {{Auth::user()->name}}
+            </a>
+            <div class="dropdown-menu">
+              <a href="{{route('dashboard')}}" class="dropdown-item">Dashboard</a>
+              <a href="{{route('dashboard-settings-account')}}" class="dropdown-item">Setting</a>
+              <div class="dropdown-divider"></div>
+                <a href="{{ route('logout') }}" 
+                class="dropdown-item" 
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"
+                >Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+                </form>
+              </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link inline-block mt-2">
+              <img src="/bwa-icon/icon-cart-empty.png" alt="">
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile Menu -->
+        <ul class="navbar-nav d-block d-lg-none">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Hi, {{Auth::user()->name}}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link d-inline-block">
+              Cart
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" 
+                class="nav-link btn btn-danger text-white"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"
+            >Logout
+          </a>
+          </li>
+        </ul>
+        @endauth
       </div>
     </div>
     </nav>
