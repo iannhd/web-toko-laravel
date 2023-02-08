@@ -18,36 +18,40 @@
     <div class="dashboard-content">
       <div class="row">
         <div class="col-12">
-          <form action="">
+          <form action="{{route('dashboard-products')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
             <div class="card">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                      <div class="form-group">
-                      <label for="">Nama Toko</label>
+                      <label for="">Product name</label>
                       <input type="text" 
-                      class="form-control">
+                      class="form-control" name="name">
                     </div> 
                   </div>
                   </div>
                   <div class="col-md-6">
                     <label for="">Price</label>
-                    <input name="category" type="number" id="" class="form-control"/>
-                  </div>
-                  <div class="col-md-12">
-                    <label for="">Description</label>
-                    <textarea name="editor" type="number" id="editor" class="form-control"></textarea>
+                    <input name="price" type="number" id="" class="form-control"/>
                   </div>
                   <div class="col-md-12">
                     <label for="">Kategori</label>
-                    <select name="category" id="" class="form-control">
-                      <option value="" disabled>Select Category</option>
+                      <select name="categories_id" class="form-control">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                     </select>
                   </div>
                   <div class="col-md-12">
+                    <label for="">Description</label>
+                    <textarea name="description" id="editor" class="form-control"></textarea>
+                  </div>
+                  <div class="col-md-12">
                     <label for="">Thumbnails</label>
-                    <input type="file" class="form-control">
+                    <input type="file" name="photo" class="form-control">
                     <p class="text-muted">
                       Kamu dapat memilih lebih dari satu file
                     </p>

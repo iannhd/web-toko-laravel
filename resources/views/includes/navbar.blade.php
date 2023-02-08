@@ -21,10 +21,10 @@
           </li>
           @guest
           <li class="nav-item ">
-            <a href="/register.html" class="nav-link">Sign Up</a>
+            <a href="{{route('register')}}" class="nav-link">Sign Up</a>
           </li>
           <li class="nav-item ">
-            <a href="/login.html" class="nav-link btn btn-success px-4 text-white">Sign In</a>
+            <a href="{{route('login')}}" class="nav-link btn btn-success px-4 text-white">Sign In</a>
           </li>
           @endguest
         </ul>
@@ -32,7 +32,7 @@
           <!-- Desktop Menu -->
          <ul class="navbar-nav d-none d-lg-flex">
           <li class="nav-item dropdown">
-            <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" >
+            <a href="{{url('/')}}" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" >
               <img src="/bwa-icon/icon-user.png" alt="" class="rounded-circle mr-2 profile-picture">
               Hi, {{Auth::user()->name}}
             </a>
@@ -52,8 +52,16 @@
               </div>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link inline-block mt-2">
-              <img src="/bwa-icon/icon-cart-empty.png" alt="">
+            <a href="{{route('cart')}}" class="nav-link inline-block mt-2">
+              @php
+                $carts = \App\Models\Cart::where('users_id', Auth::user()->id)->count()  
+              @endphp
+              @if($carts > 0)
+                <img src="/images/icon-cart-filled.svg" alt="">
+                <div class="card-badge">{{$carts}}</div>
+              @else
+                <img src="/bwa-icon/icon-cart-empty.png" alt="">
+              @endif
             </a>
           </li>
         </ul>
@@ -66,7 +74,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link d-inline-block">
+            <a href="{{route('cart')}}" class="nav-link d-inline-block">
               Cart
             </a>
           </li>
