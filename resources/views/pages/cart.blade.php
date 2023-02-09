@@ -132,14 +132,16 @@
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="regencies_id">Province</label>
+                <label for="regencies_id">Regency</label>
                 <select 
                 v-if="regencies"
                 v-model="regencies_id" 
                 class="form-control" 
                 id="regencies_id" 
-                name="regencies_id" 
+                name="regencies_id"
+                :class="{ 'disabled' : this.provinces_id !== null}"
                 >
+                
                 <option v-for="regency in regencies" :value="regency.id">
                   @{{regency.name}}
                 </option>

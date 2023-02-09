@@ -18,6 +18,15 @@
     <div class="dashboard-content">
       <div class="row">
         <div class="col-12">
+          @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="m-0">
+                        @foreach ($errors->all() as $error)
+                            <li style="list-style: none" class="align-items-center"> <b> {{$error}} </b></li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
           <a href="{{route('dashboard-products-create')}}" class="btn btn-success">
             Add New Product
           </a>
