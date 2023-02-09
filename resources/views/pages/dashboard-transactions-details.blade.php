@@ -140,8 +140,8 @@
     el: '#transactionDetails',
     data() {
       return {
-        status: "{{$transaction->shipping_status}}",
-        resi : "{{$transaction->resi}}"
+        status: "{{ $transaction->shipping_status }}",
+        resi : "{{ $transaction->resi }}"
       }
     },
   })

@@ -38,10 +38,6 @@ class DashboardTransactionController extends Controller
     {
         $data = $request->all();    
 
-        dd($data);
-
-        return;
-
         $item = TransactionDetail::findOrFail($id);
 
         $item->update($data);

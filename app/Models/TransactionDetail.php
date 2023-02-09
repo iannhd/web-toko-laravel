@@ -13,7 +13,7 @@ class TransactionDetail extends Model
         'transactions_id',
         'products_id',
         'price',
-        'transaction_status',
+        'shipping_status',
         'resi',
         'code',
     ];
