@@ -33,8 +33,8 @@
             class="list-group-item list-group-item-action {{ (request()->is('dashboard-products*')) ? 'active' : '' }}">
               My Products
             </a>
-            <a href="{{route('dashboard-transaction')}}" 
-            class="list-group-item list-group-item-action {{ (request()->is('dashboard/transactions*')) ? 'active' : '' }}">
+            <a href="{{route('dashboard-transactions')}}" 
+            class="list-group-item list-group-item-action {{ (request()->is('dashboard-transactions*')) ? 'active' : '' }}">
               Transaction
             </a>
             <a href="{{route('dashboard-settings-store')}}" 
@@ -59,7 +59,7 @@
       
       <!-- Navbar -->
       <div id="page-content-wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top"
+        <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top "
         data-aos="fade-down"
           >
             <div class="container-fluid">
@@ -154,6 +154,7 @@
         $('#wrapper').toggleClass('toggled');
       })
     </script>
+    
     @stack('addon-script')
   </body>
 </html>
